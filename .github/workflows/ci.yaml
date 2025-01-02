@@ -1,0 +1,24 @@
+name: ci-wf
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+jobs:
+   ci-job:
+     runs-on: ubuntu-latest
+     steps:
+       - name: welcome steps
+         run: echo "welcome to the github actions"
+       - name: Checkout Repository
+         uses: actions/checkout@v4
+       - name: Repository information 
+         run :  |
+           echo "Repository name: ${{github.repository}}"
+           echo "Type of Event: ${{github.event_name}}"
+           git -v 
+           git branch
+           git log
+           git status
